@@ -87,58 +87,32 @@ def build_row():
         row[q["id"]] = clean_value(st.session_state.respostas.get(q["id"], ""))
     return row
 
-# ── Telas ───────────────────────────────────────────────────────────────────
-def tela_identificacao():
-    st.markdown('<p class="titulo-step">💎 Bem-vindo(a)!</p>', unsafe_allow_html=True)
-    st.markdown('<p class="sub-step">Este questionario leva cerca de 3 minutos. Suas respostas sao anonimas.</p>', unsafe_allow_html=True)
-    nome  = st.text_input("Nome completo", value=st.session_state.nome,  placeholder="Seu nome")
-    email = st.text_input("E-mail",         value=st.session_state.email, placeholder="seuemail@exemplo.com")
-    idade = st.radio("Faixa de idade", ["18-24 anos", "25-34 anos", "35-44 anos", "45 anos ou mais"],
-                     index=["18-24 anos","25-34 anos","35-44 anos","45 anos ou mais"].index(st.session_state.idade)
-                     if st.session_state.idade else None, horizontal=True)
-    if st.button("Continuar ->", disabled=not (nome.strip() and is_valid_email(email) and idade),
-                 use_container_width=True, type="primary"):
-        st.session_state.nome = nome; st.session_state.email = email
-        st.session_state.idade = idade; st.session_state.step = 1; st.rerun()
+def get_next_step(current_step, q_id, valor_final):
+    """Retorna o proximo step, aplicando logica condicional."""
+    sexo = get_sexo()
 
-def tela_genero():
-    st.markdown('<p class="titulo-step">Como voce se identifica?</p>', unsafe_allow_html=True)
-    st.markdown('<p class="sub-step">O questionario tem perguntas diferentes por perfil de compra.</p>', unsafe_allow_html=True)
-    genero = st.radio("Genero", ["Feminino", "Masculino"],
-                      index=["Feminino","Masculino"].index(st.session_state.genero)
-                      if st.session_state.genero else None,
-                      horizontal=True, label_visibility="collapsed")
-    col1, col2 = st.columns(2)
-    with col1:
-        if st.button("<- Voltar", use_container_width=True):
-            st.session_state.step = 0; st.rerun()
-    with col2:
-        if st.button("Continuar ->", disabled=not genero, use_container_width=True, type="primary"):
-            st.session_state.genero = genero; st.session_state.step = 2; st.rerun()
+    # Masc: pula perguntas de bolsas se resposta negativa
+    if sexo == "Masculino" and q_id == "interesse_bolsas":
+        if valor_final in BOLSAS_NEGATIVO:
+            return SKIP_TO_END
+        return current_step + 1
 
-def tela_intro():
-    nome_curto = st.session_state.nome.split()[0]
-    genero     = st.session_state.genero
-    questions  = get_questions()
-    st.markdown(f'<p class="titulo-step">Ola, {nome_curto}! 👋</p>', unsafe_allow_html=True)
-    st.markdown(f'<span class="badge-genero">Perfil {genero}</span>', unsafe_allow_html=True)
-    desc = ("Agora vamos entender seus habitos de compra de joias e acessorios."
-            if genero == "Feminino" else "Agora vamos entender como voce compra joias para presentear.")
-    st.markdown(f'<p class="sub-step">{desc}<br>Sao <strong>{len(questions)}</strong> perguntas rapidas.</p>',
-                unsafe_allow_html=True)
-    col1, col2 = st.columns(2)
-    with col1:
-        if st.button("<- Voltar", use_container_width=True):
-            st.session_state.step = 1; st.rerun()
-    with col2:
-        if st.button("Comecar ->", use_container_width=True, type="primary"):
-            st.session_state.step = 3; st.rerun()
+    # Femi: pula Q13 (marcas_presentear) se Q12 (marcas_bolsas) vazia
+    if sexo == "Feminino" and q_id == "marcas_bolsas":
+        sel = valor_final if isinstance(valor_final, list) else []
+        if not sel:
+            return SKIP_TO_END
+        return current_step + 1
 
-def tela_pergunta(idx):
-    questions = get_questions()
-    q         = questions[idx]
-    total     = len(questions)
-    num       = idx + 1
+    return current_step + 1
+
+def get_prev_step(current_step):
+    """Voltar: pula perguntas condicionais que foram skippadas."""
+    return max(0, current_step - 1)
+
+
+# ── Renderizacao de opcoes ────────────────────────────────────────────────────
+def render_single(q, resposta_atual):
     tem_outro = q.get("tem_outro", False)
     opcoes    = q["opcoes"] + ([OUTRO_LABEL] if tem_outro else [])
 
