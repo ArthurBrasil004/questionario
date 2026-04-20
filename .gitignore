@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.env
+.venv/
+venv/
+env/
+
+# Dados gerados localmente (não versionar respostas reais)
+respostas.xlsx
+
+# Secrets — NUNCA commitar no GitHub
+.streamlit/secrets.toml
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# Streamlit cache
+.streamlit/cache/

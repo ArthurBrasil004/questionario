@@ -1,0 +1,91 @@
+/* ── Layout geral ──────────────────────────────────────────── */
+.stApp {
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+/* ── Tipografia das telas ──────────────────────────────────── */
+.titulo-step {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: inherit;
+}
+
+.sub-step {
+    font-size: 15px;
+    color: #666666;
+    margin-bottom: 24px;
+    line-height: 1.6;
+}
+
+/* ── Badge de perfil (Feminino / Masculino) ────────────────── */
+.badge-genero {
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    background: #EEEDFE;
+    color: #3C3489;
+    margin-bottom: 16px;
+}
+
+/* ── Radio buttons e checkboxes ────────────────────────────── */
+div[data-testid="stRadio"] label {
+    font-size: 15px;
+    padding: 6px 0;
+}
+
+div[data-testid="stCheckbox"] label {
+    font-size: 15px;
+    padding: 4px 0;
+}
+
+/* ── Botões ────────────────────────────────────────────────── */
+.stButton > button {
+    border-radius: 8px;
+    font-size: 15px;
+    padding: 10px 20px;
+    transition: background 0.2s ease;
+}
+
+/* ── Inputs de texto ───────────────────────────────────────── */
+.stTextInput > div > div > input {
+    border-radius: 8px;
+    font-size: 15px;
+    padding: 10px 12px;
+}
+
+/* ── Caption da barra de progresso ────────────────────────── */
+.stCaption {
+    font-size: 12px;
+    color: #888888;
+}
+
+/* ── Expander de resumo ────────────────────────────────────── */
+details summary {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* ── Divider ───────────────────────────────────────────────── */
+hr {
+    margin: 1.5rem 0;
+    border-color: #e8e8e8;
+}
+
+/* ── Card de sucesso ───────────────────────────────────────── */
+.success-card {
+    background: #EEEDFE;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 20px;
+    border-left: 4px solid #7F77DD;
+}
+
+.success-card p {
+    margin: 0;
+    font-size: 15px;
+    color: #3C3489;
+}
