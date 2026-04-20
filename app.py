@@ -75,7 +75,7 @@ def build_row():
 # ── Telas ───────────────────────────────────────────────────────────────────
 def tela_identificacao():
     st.markdown('<p class="titulo-step">💎 Bem-vindo(a)!</p>', unsafe_allow_html=True)
-    st.markdown('<p class="sub-step">Este questionario leva cerca de 3 minutos. Suas respostas sao anonimas.</p>', unsafe_allow_html=True)
+    st.markdown('<p class="sub-step">Este questionario leva cerca de 3 minutos.</p>', unsafe_allow_html=True)
     nome  = st.text_input("Nome completo", value=st.session_state.nome,  placeholder="Seu nome")
     email = st.text_input("E-mail",         value=st.session_state.email, placeholder="seuemail@exemplo.com")
     idade = st.radio("Faixa de idade", ["18-24 anos", "25-34 anos", "35-44 anos", "45 anos ou mais"],
