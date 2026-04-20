@@ -350,7 +350,7 @@ def main():
             st.markdown("<br>", unsafe_allow_html=True)
             col_esp, col_link = st.columns([6, 1])
             with col_link:
-                if st.button("Admin", key="btn_admin"):
+                if st.button("Adm", key="btn_admin"):
                     st.session_state.modo_admin = True
                     st.rerun()
 
