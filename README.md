@@ -20,7 +20,7 @@ questionario_sg/
 ```bash
 # 1. Clone o repositório
 git clone https://github.com/seu-usuario/questionario-sg.git
-cd questionario-sg
+cd questionario
 
 # 2. Instale as dependências
 pip install -r requirements.txt
