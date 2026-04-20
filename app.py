@@ -290,9 +290,51 @@ def tela_final():
         st.rerun()
 
 
+# ── Painel administrativo (acessivel na primeira pergunta) ───────────────────
+def painel_admin():
+    """Tela exclusiva de administracao. Acessada pelo link discreto na Q1."""
+    st.markdown('<p class="titulo-step">Painel administrativo</p>', unsafe_allow_html=True)
+
+    senha = st.text_input("Senha", type="password", key="admin_pw_panel")
+
+    if senha:
+        if senha == ADMIN_PASSWORD:
+            st.success("Acesso autorizado.")
+            if Path(EXCEL_PATH).exists():
+                df = pd.read_excel(EXCEL_PATH, engine="openpyxl")
+                st.caption(f"{len(df)} resposta(s) registrada(s).")
+                with open(EXCEL_PATH, "rb") as f:
+                    st.download_button(
+                        label="Baixar todas as respostas (Excel)",
+                        data=f,
+                        file_name="respostas.xlsx",
+                        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                        use_container_width=True,
+                    )
+                st.divider()
+                st.dataframe(df.tail(10), use_container_width=True)
+            else:
+                st.info("Nenhuma resposta registrada ainda.")
+        else:
+            st.error("Senha incorreta.")
+
+    st.divider()
+    if st.button("Voltar ao formulario", use_container_width=True):
+        st.session_state.modo_admin = False
+        st.rerun()
+
+
 # ── Roteador principal ────────────────────────────────────────────────────────
 def main():
     init_state()
+
+    if "modo_admin" not in st.session_state:
+        st.session_state.modo_admin = False
+
+    # Modo admin: tela dedicada, sem formulario
+    if st.session_state.modo_admin:
+        painel_admin()
+        return
 
     step  = st.session_state.step
     total = get_total_steps()
@@ -302,6 +344,15 @@ def main():
     else:
         progress_bar()
         tela_pergunta(step)
+
+        # Link discreto visivel apenas na primeira pergunta
+        if step == 0:
+            st.markdown("<br>", unsafe_allow_html=True)
+            col_esp, col_link = st.columns([6, 1])
+            with col_link:
+                if st.button("Admin", key="btn_admin"):
+                    st.session_state.modo_admin = True
+                    st.rerun()
 
 
 if __name__ == "__main__":
