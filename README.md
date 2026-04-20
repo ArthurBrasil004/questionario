@@ -1,4 +1,4 @@
-# 💎 Questionário SG
+# 💎 Questionário
 
 Formulário multi-etapa condicional para pesquisa de mercado de joias em Maceió.
 Respostas são salvas automaticamente em Excel.
