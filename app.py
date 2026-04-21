@@ -65,7 +65,7 @@ def save_to_sheets(row: dict):
 
 # ── Helpers de estado ─────────────────────────────────────────────────────────
 def init_state():
-    defaults = {"step": 0, "respostas": {}}
+    defaults = {"step": 0, "respostas": {}, "salvo": False}
     for k, v in defaults.items():
         if k not in st.session_state:
             st.session_state[k] = v
@@ -248,11 +248,13 @@ def tela_final():
     st.markdown('<p class="sub-step">Suas respostas foram registradas com sucesso.</p>',
                 unsafe_allow_html=True)
 
-    row = build_row()
-    save_to_sheets(row)
+    if not st.session_state.salvo:          
+        row = build_row()
+        save_to_sheets(row)
+        st.session_state.salvo = True
 
     if st.button("Responder novamente", use_container_width=True):
-        for k in ["step", "respostas"]:
+        for k in ["step", "respostas", "salvo"]:
             del st.session_state[k]
         st.rerun()
 
