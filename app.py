@@ -1,5 +1,5 @@
 """
-app.py  -  Questionario SG  (v4)
+app.py  -  Questionario (v4)
 Respostas salvas direto no Google Sheets via service account.
 Credenciais: credentials.json (local) ou st.secrets (Streamlit Cloud).
 """
@@ -13,7 +13,7 @@ from google.oauth2.service_account import Credentials
 from questions import UNISSEX_QUESTIONS, FEMI_QUESTIONS, MASC_QUESTIONS
 
 # ── Constantes ───────────────────────────────────────────────────────────────
-SHEET_NAME   = "Questionario-iolita"
+SHEET_NAME   = "Questionário-iolita"
 OUTRO_LABEL  = "Outro"
 SKIP_TO_END  = 9999
 
@@ -29,7 +29,7 @@ SCOPES = [
     "https://www.googleapis.com/auth/drive",
 ]
 
-st.set_page_config(page_title="Questionario SG", page_icon="diamond_with_a_dot", layout="centered")
+st.set_page_config(page_title="Questionario", page_icon="diamond_with_a_dot", layout="centered")
 
 def load_css(path):
     with open(path, encoding="utf-8") as f:
