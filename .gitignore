@@ -12,6 +12,7 @@ respostas.xlsx
 
 # Credenciais — NUNCA commitar
 credentials.json
+questionario-494017-eba6aca4fbf6.json
 .streamlit/secrets.toml
 
 # VS Code
