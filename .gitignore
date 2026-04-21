@@ -7,10 +7,11 @@ __pycache__/
 venv/
 env/
 
-# Dados gerados localmente (não versionar respostas reais)
+# Dados gerados localmente
 respostas.xlsx
 
-# Secrets — NUNCA commitar no GitHub
+# Credenciais — NUNCA commitar
+credentials.json
 .streamlit/secrets.toml
 
 # VS Code
