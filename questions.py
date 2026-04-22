@@ -1,9 +1,14 @@
 # questions.py
-# Fluxo: 4 perguntas unissex → bifurca por sexo → questionario feminino ou masculino
 
 LOJAS_OPCOES = [
     "Iolita",
     "RM Joias",
+    "Carnauba",
+    "Swarovski",
+    "Pandora",
+    "Casa Laranjeira (CL Joias)",
+    "Tiffany & Co",
+    "Cartier",
     "Vivara",
     "Vivara Life",
     "Vivante",
@@ -13,11 +18,11 @@ LOJAS_OPCOES = [
 
 MARCAS_BOLSAS_OPCOES = [
     "Coach",
-    "Michael Kors",
-    "Kate Spade",
-    "Tory Burch",
-    "Furla",
-    "Longchamp",
+    "Arezzo",
+    "Schultz",
+    "Anacapri",
+    "Santa Lolla",
+    "Carmen Steffens",
     "Gucci",
     "Louis Vuitton",
     "Prada",
@@ -25,15 +30,19 @@ MARCAS_BOLSAS_OPCOES = [
 ]
 
 TIPO_BOLSA_OPCOES = [
-    "Tote / Sacola",
-    "Crossbody / Tiracolo",
-    "Clutch / Carteira de mao",
-    "Mochila",
-    "Mini bag",
+    "Tote",
+    "Crossbody",
+    "Clutch",
     "Shoulder bag",
+    "Satchel",
+    "Hobo",
+    "Bucket",
+    "Mochila",
+    "Carteira (wallet on chain)",
+    "Bolsa de mao (top handle)",
 ]
 
-# ── Perguntas comuns a todos ─────────────────────────────────────────────────
+# ── Perguntas comuns a todos ──────────────────────────────────────────────────
 UNISSEX_QUESTIONS = [
     {
         "id": "idade",
@@ -71,12 +80,14 @@ UNISSEX_QUESTIONS = [
     },
 ]
 
-# ── Questionario Feminino (13 perguntas) ─────────────────────────────────────
-# Q13 (marcas_presentear) e do tipo "dynamic_single":
-#   suas opcoes sao geradas dinamicamente a partir da resposta de Q12 (marcas_bolsas).
-#   Se Q12 nao tiver selecoes, Q13 e pulada automaticamente.
+# ── Questionario Feminino ─────────────────────────────────────────────────────
+# Logica condicional no app.py:
+#   - Q15 e Q16 (coach_sabia / coach_diferencial) so aparecem se
+#     "Coach" estiver selecionado em Q12 (marcas_conhece).
+#   - Se Coach nao estiver em marcas_conhece, vai direto ao fim apos Q14.
 
 FEMI_QUESTIONS = [
+    # ── Joias ────────────────────────────────────────────────────────────────
     {
         "id": "freq_compra",
         "texto": "Com que frequencia voce compra joias ou acessorios por ano?",
@@ -145,7 +156,7 @@ FEMI_QUESTIONS = [
         "id": "lojas_conhece",
         "texto": "Quais lojas de joias voce conhece? (marque todas)",
         "tipo": "multi",
-        "max": 8,
+        "max": 14,
         "tem_outro": True,
         "opcoes": LOJAS_OPCOES[:],
     },
@@ -153,7 +164,7 @@ FEMI_QUESTIONS = [
         "id": "lojas_ja_comprou",
         "texto": "Quais lojas de joias voce ja comprou? (marque todas)",
         "tipo": "multi",
-        "max": 8,
+        "max": 14,
         "tem_outro": True,
         "opcoes": LOJAS_OPCOES[:],
     },
@@ -161,10 +172,11 @@ FEMI_QUESTIONS = [
         "id": "lojas_pretende_comprar",
         "texto": "Quais lojas de joias voce pretende comprar? (marque todas)",
         "tipo": "multi",
-        "max": 8,
+        "max": 14,
         "tem_outro": True,
         "opcoes": LOJAS_OPCOES[:],
     },
+    # ── Bolsas ───────────────────────────────────────────────────────────────
     {
         "id": "freq_bolsas",
         "texto": "Com qual frequencia voce realiza a compra de bolsas por ano?",
@@ -173,32 +185,57 @@ FEMI_QUESTIONS = [
     },
     {
         "id": "tipo_bolsa",
-        "texto": "Qual tipo de bolsa voce mais gosta? (ate 3 opcoes)",
+        "texto": "Qual tipo de bolsa voce mais gosta? (marque todas)",
         "tipo": "multi",
-        "max": 3,
+        "max": 11,
         "tem_outro": True,
         "opcoes": TIPO_BOLSA_OPCOES[:],
     },
     {
-        "id": "marcas_bolsas",
-        "texto": "Quais marcas de bolsas voce possui mais preferencia? (marque todas)",
+        "id": "marcas_conhece",
+        "texto": "Quais marcas de bolsas abaixo voce conhece? (marque todas)",
         "tipo": "multi",
-        "max": 10,
+        "max": 11,
         "tem_outro": True,
         "opcoes": MARCAS_BOLSAS_OPCOES[:],
     },
     {
-        "id": "marcas_presentear",
-        "texto": "Dentro dessas marcas, qual voce gostaria de ser presenteada?",
-        "tipo": "dynamic_single",
-        "fonte": "marcas_bolsas",
+        "id": "marcas_possui",
+        "texto": "Quais marcas de bolsas abaixo voce possui? (marque todas)",
+        "tipo": "multi",
+        "max": 11,
+        "tem_outro": True,
+        "opcoes": MARCAS_BOLSAS_OPCOES[:],
+    },
+    {
+        "id": "marcas_gostaria",
+        "texto": "Dentro dessas marcas, qual voce gostaria de ser presenteada ou adquirir? (marque todas)",
+        "tipo": "multi",
+        "max": 11,
+        "tem_outro": True,
+        "opcoes": MARCAS_BOLSAS_OPCOES[:],
+    },
+    # ── Condicionais Coach (so aparecem se Coach em marcas_conhece) ──────────
+    {
+        "id": "coach_sabia",
+        "texto": "Voce sabia que existe uma loja com a revenda exclusiva da marca Coach em Maceio?",
+        "tipo": "single",
+        "condicional_coach": True,
+        "opcoes": ["Sim", "Nao"],
+    },
+    {
+        "id": "coach_diferencial",
+        "texto": "Voce considera um diferencial importante uma loja oferecer bolsas da marca Coach em Maceio?",
+        "tipo": "single",
+        "condicional_coach": True,
+        "opcoes": ["Sim", "Nao"],
     },
 ]
 
-# ── Questionario Masculino (12 perguntas) ────────────────────────────────────
-# Q10-12 (marcas_conhece, marcas_ja_comprou, marcas_pretende_comprar) sao
-# condicionais: so aparecem se a resposta de Q9 (interesse_bolsas) for positiva.
-# Respostas negativas: "Nao, prefiro joias" ou "Nao costumo presentear com bolsas de marca"
+# ── Questionario Masculino ────────────────────────────────────────────────────
+# Logica condicional no app.py:
+#   - Q10, Q11, Q12 (marcas) so aparecem se interesse_bolsas NAO for negativo.
+#   - Negativo = "Nao, prefiro joias" ou "Nao costumo presentear com bolsas de marca"
 
 MASC_QUESTIONS = [
     {
@@ -270,7 +307,7 @@ MASC_QUESTIONS = [
         "id": "lojas_conhece",
         "texto": "Quais lojas de joias voce conhece? (marque todas)",
         "tipo": "multi",
-        "max": 8,
+        "max": 14,
         "tem_outro": True,
         "opcoes": LOJAS_OPCOES[:],
     },
@@ -278,7 +315,7 @@ MASC_QUESTIONS = [
         "id": "lojas_ja_comprou",
         "texto": "Quais lojas de joias voce ja comprou? (marque todas)",
         "tipo": "multi",
-        "max": 8,
+        "max": 14,
         "tem_outro": True,
         "opcoes": LOJAS_OPCOES[:],
     },
@@ -286,7 +323,7 @@ MASC_QUESTIONS = [
         "id": "lojas_pretende_comprar",
         "texto": "Quais lojas de joias voce pretende comprar? (marque todas)",
         "tipo": "multi",
-        "max": 8,
+        "max": 14,
         "tem_outro": True,
         "opcoes": LOJAS_OPCOES[:],
     },
@@ -304,27 +341,27 @@ MASC_QUESTIONS = [
     },
     {
         "id": "marcas_conhece",
-        "texto": "Quais marcas de bolsas voce ja conhece? (marque todas)",
+        "texto": "Quais marcas voce ja conhece? (marque todas)",
         "tipo": "multi",
-        "max": 10,
+        "max": 11,
         "tem_outro": True,
         "condicional_bolsas": True,
         "opcoes": MARCAS_BOLSAS_OPCOES[:],
     },
     {
         "id": "marcas_ja_comprou",
-        "texto": "Quais marcas de bolsas voce ja comprou? (marque todas)",
+        "texto": "Quais marcas voce ja comprou? (marque todas)",
         "tipo": "multi",
-        "max": 10,
+        "max": 11,
         "tem_outro": True,
         "condicional_bolsas": True,
         "opcoes": MARCAS_BOLSAS_OPCOES[:],
     },
     {
         "id": "marcas_pretende_comprar",
-        "texto": "Quais marcas de bolsas voce tem pretensao de comprar? (marque todas)",
+        "texto": "Quais marcas voce tem pretensao de comprar? (marque todas)",
         "tipo": "multi",
-        "max": 10,
+        "max": 11,
         "tem_outro": True,
         "condicional_bolsas": True,
         "opcoes": MARCAS_BOLSAS_OPCOES[:],
