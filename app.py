@@ -1,5 +1,5 @@
 """
-app.py  -  Questionario (v6)
+app.py  -  Questionario (v7)
 Respostas salvas direto no Google Sheets via service account.
 Credenciais: credentials.json (local) ou st.secrets (Streamlit Cloud).
 """
@@ -239,7 +239,7 @@ def render_dynamic_multi(q, resposta_atual):
                        key=f"{q['id']}_{opcao}"):
             novos.append(opcao)
 
-    return novos, len(novos) > 0
+    return novos, True
 
 
 # ── Tela de pergunta ──────────────────────────────────────────────────────────
