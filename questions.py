@@ -163,18 +163,14 @@ FEMI_QUESTIONS = [
     {
         "id": "lojas_ja_comprou",
         "texto": "Quais lojas de joias voce ja comprou? (marque todas)",
-        "tipo": "multi",
-        "max": 14,
-        "tem_outro": True,
-        "opcoes": LOJAS_OPCOES[:],
+        "tipo": "dynamic_multi",
+        "fonte": "lojas_conhece",
     },
     {
         "id": "lojas_pretende_comprar",
         "texto": "Quais lojas de joias voce pretende comprar? (marque todas)",
-        "tipo": "multi",
-        "max": 14,
-        "tem_outro": True,
-        "opcoes": LOJAS_OPCOES[:],
+        "tipo": "dynamic_multi",
+        "fonte": "lojas_conhece",
     },
     # ── Bolsas ───────────────────────────────────────────────────────────────
     {
@@ -202,18 +198,14 @@ FEMI_QUESTIONS = [
     {
         "id": "marcas_possui",
         "texto": "Quais marcas de bolsas abaixo voce possui? (marque todas)",
-        "tipo": "multi",
-        "max": 11,
-        "tem_outro": True,
-        "opcoes": MARCAS_BOLSAS_OPCOES[:],
+        "tipo": "dynamic_multi",
+        "fonte": "marcas_conhece",
     },
     {
         "id": "marcas_gostaria",
         "texto": "Dentro dessas marcas, qual voce gostaria de ser presenteada ou adquirir? (marque todas)",
-        "tipo": "multi",
-        "max": 11,
-        "tem_outro": True,
-        "opcoes": MARCAS_BOLSAS_OPCOES[:],
+        "tipo": "dynamic_multi",
+        "fonte": "marcas_conhece",
     },
     # ── Condicionais Coach (so aparecem se Coach em marcas_conhece) ──────────
     {
@@ -314,18 +306,14 @@ MASC_QUESTIONS = [
     {
         "id": "lojas_ja_comprou",
         "texto": "Quais lojas de joias voce ja comprou? (marque todas)",
-        "tipo": "multi",
-        "max": 14,
-        "tem_outro": True,
-        "opcoes": LOJAS_OPCOES[:],
+        "tipo": "dynamic_multi",
+        "fonte": "lojas_conhece",
     },
     {
         "id": "lojas_pretende_comprar",
         "texto": "Quais lojas de joias voce pretende comprar? (marque todas)",
-        "tipo": "multi",
-        "max": 14,
-        "tem_outro": True,
-        "opcoes": LOJAS_OPCOES[:],
+        "tipo": "dynamic_multi",
+        "fonte": "lojas_conhece",
     },
     {
         "id": "interesse_bolsas",
@@ -351,19 +339,15 @@ MASC_QUESTIONS = [
     {
         "id": "marcas_ja_comprou",
         "texto": "Quais marcas voce ja comprou? (marque todas)",
-        "tipo": "multi",
-        "max": 11,
-        "tem_outro": True,
+        "tipo": "dynamic_multi",
+        "fonte": "marcas_conhece",
         "condicional_bolsas": True,
-        "opcoes": MARCAS_BOLSAS_OPCOES[:],
     },
     {
         "id": "marcas_pretende_comprar",
         "texto": "Quais marcas voce tem pretensao de comprar? (marque todas)",
-        "tipo": "multi",
-        "max": 11,
-        "tem_outro": True,
+        "tipo": "dynamic_multi",
+        "fonte": "marcas_conhece",
         "condicional_bolsas": True,
-        "opcoes": MARCAS_BOLSAS_OPCOES[:],
     },
 ]
