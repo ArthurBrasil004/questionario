@@ -13,7 +13,7 @@ from google.oauth2.service_account import Credentials
 from questions import UNISSEX_QUESTIONS, FEMI_QUESTIONS, MASC_QUESTIONS
 
 # ── Constantes ───────────────────────────────────────────────────────────────
-SHEET_NAME   = "Questionario-iolita"
+SHEET_NAME   = "Questionário-iolita"
 OUTRO_LABEL  = "Outro"
 SKIP_TO_END  = 9999
 
