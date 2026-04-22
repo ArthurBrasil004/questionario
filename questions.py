@@ -114,20 +114,6 @@ FEMI_QUESTIONS = [
         ],
     },
     {
-        "id": "preocupacao_compra",
-        "texto": "O que mais te preocupa ao comprar uma joia? (ate 2 opcoes)",
-        "tipo": "multi",
-        "max": 2,
-        "tem_outro": True,
-        "opcoes": [
-            "Escurecer ou oxidar com o tempo",
-            "Preco muito alto",
-            "Design nao combinar com meu estilo",
-            "Falta de durabilidade",
-            "Dificuldade de troca ou devolucao",
-        ],
-    },
-    {
         "id": "o_que_valoriza",
         "texto": "O que voce mais valoriza ao escolher uma joia? (ate 2 opcoes)",
         "tipo": "multi",
