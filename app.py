@@ -106,22 +106,31 @@ def build_row():
         row[q["id"]] = clean_value(st.session_state.respostas.get(q["id"], ""))
     return row
 
+def _coach_selecionado():
+    """Verifica se Coach foi marcado em marcas_conhece."""
+    val = st.session_state.respostas.get("marcas_conhece", [])
+    selecionados = val if isinstance(val, list) else []
+    return any("Coach" in str(s) for s in selecionados)
+ 
 def get_next_step(current_step, q_id, valor_final):
     sexo = get_sexo()
+ 
+    # Masc: pula marcas se resposta de bolsas for negativa
     if sexo == "Masculino" and q_id == "interesse_bolsas":
         if valor_final in BOLSAS_NEGATIVO:
             return SKIP_TO_END
         return current_step + 1
-    if sexo == "Feminino" and q_id == "marcas_bolsas":
-        sel = valor_final if isinstance(valor_final, list) else []
-        if not sel:
-            return SKIP_TO_END
-        return current_step + 1
+ 
+    # Femi: apos marcas_gostaria, verifica se Coach foi selecionado
+    if sexo == "Feminino" and q_id == "marcas_gostaria":
+        if _coach_selecionado():
+            return current_step + 1   # vai para coach_sabia
+        return SKIP_TO_END            # pula as duas perguntas Coach
+ 
     return current_step + 1
-
+ 
 def get_prev_step(current_step):
     return max(0, current_step - 1)
-
 
 # ── Renderizacao de opcoes ────────────────────────────────────────────────────
 def render_single(q, resposta_atual):
