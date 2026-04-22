@@ -22,7 +22,23 @@ BOLSAS_NEGATIVO = [
     "Nao costumo presentear com bolsas de marca",
 ]
 
-ALL_COLS = ['timestamp', 'idade', 'valor_ultima_compra', 'renda', 'sexo', 'freq_compra', 'para_quem_compra', 'onde_compra', 'preocupacao_compra', 'o_que_valoriza', 'estilo_preferido', 'lojas_conhece', 'lojas_ja_comprou', 'lojas_pretende_comprar', 'freq_bolsas', 'tipo_bolsa', 'marcas_bolsas', 'marcas_presentear', 'ocasioes_compra', 'como_decide', 'compraria_online', 'interesse_bolsas', 'marcas_conhece', 'marcas_ja_comprou', 'marcas_pretende_comprar']
+ALL_COLS = [
+    # unissex
+    'timestamp', 'idade', 'valor_ultima_compra', 'renda', 'sexo',
+    # femi - joias
+    'freq_compra', 'para_quem_compra', 'onde_compra',
+    'preocupacao_compra', 'o_que_valoriza', 'estilo_preferido',
+    'lojas_conhece', 'lojas_ja_comprou', 'lojas_pretende_comprar',
+    # femi - bolsas
+    'freq_bolsas', 'tipo_bolsa',
+    'marcas_conhece', 'marcas_possui', 'marcas_gostaria',
+    # femi - coach condicional
+    'coach_sabia', 'coach_diferencial',
+    # masc
+    'ocasioes_compra', 'como_decide', 'compraria_online', 'interesse_bolsas',
+    # masc - marcas condicional
+    'marcas_ja_comprou', 'marcas_pretende_comprar',
+]
 
 SCOPES = [
     "https://www.googleapis.com/auth/spreadsheets",
