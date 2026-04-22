@@ -26,8 +26,7 @@ ALL_COLS = [
     # unissex
     'timestamp', 'idade', 'valor_ultima_compra', 'renda', 'sexo',
     # femi - joias
-    'freq_compra', 'para_quem_compra', 'onde_compra',
-    'preocupacao_compra', 'o_que_valoriza', 'estilo_preferido',
+    'freq_compra', 'para_quem_compra', 'onde_compra', 'o_que_valoriza', 'estilo_preferido',
     'lojas_conhece', 'lojas_ja_comprou', 'lojas_pretende_comprar',
     # femi - bolsas
     'freq_bolsas', 'tipo_bolsa',
