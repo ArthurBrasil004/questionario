@@ -52,7 +52,7 @@ UNISSEX_QUESTIONS = [
     },
     {
         "id": "valor_ultima_compra",
-        "texto": "Qual o valor médio da sua ultima compra de jóia ou acessório?",
+        "texto": "Qual o valor médio da sua última compra de jóia ou acessório?",
         "tipo": "single",
         "opcoes": [
             "Até R\\$ 500",
@@ -66,7 +66,7 @@ UNISSEX_QUESTIONS = [
         "texto": "Qual sua faixa de renda mensal?",
         "tipo": "single",
         "opcoes": [
-            "Ate R\\$ 3.000",
+            "Até R\\$ 3.000",
             "R\\$ 3.001 a R\\$ 6.000",
             "R\\$ 6.001 a R\\$ 12.000",
             "Acima de R\\$ 12.000",
@@ -80,6 +80,7 @@ UNISSEX_QUESTIONS = [
     },
 ]
 
+
 # ── Questionario Feminino ─────────────────────────────────────────────────────
 # Logica condicional no app.py:
 #   - Q15 e Q16 (coach_sabia / coach_diferencial) so aparecem se
@@ -88,26 +89,26 @@ UNISSEX_QUESTIONS = [
 
 FEMI_QUESTIONS = [
     # ── Joias ────────────────────────────────────────────────────────────────
-    {
+        {
         "id": "freq_compra",
-        "texto": "Com que frequencia voce compra joias ou acessorios por ano?",
+        "texto": "Com que frequência você compra joias ou acessórios por ano?",
         "tipo": "single",
         "opcoes": ["Menos de 1 vez", "1-2 vezes", "3-5 vezes", "6 ou mais vezes"],
     },
     {
         "id": "para_quem_compra",
-        "texto": "Para quem voce costuma comprar com mais frequencia?",
+        "texto": "Para quem você costuma comprar com mais frequência?",
         "tipo": "single",
-        "opcoes": ["Para mim mesma", "Para presentear alguem", "Metade a metade"],
+        "opcoes": ["Para mim mesma", "Para presentear alguém", "Metade a metade"],
     },
     {
         "id": "onde_compra",
-        "texto": "Onde voce costuma comprar joias e acessorios? (ate 2 opcoes)",
+        "texto": "Onde você costuma comprar joias e acessórios? (até 2 opções)",
         "tipo": "multi",
         "max": 2,
         "opcoes": [
-            "Shopping em Maceio",
-            "Loja fisica (marca local)",
+            "Shopping em Maceió",
+            "Loja física (marca local)",
             "Site ou app nacional (ex: Vivara, Oma)",
             "E-commerce importado (Shein, Shopee, Temu)",
             "Redes sociais ou WhatsApp de loja local",
@@ -115,32 +116,32 @@ FEMI_QUESTIONS = [
     },
     {
         "id": "o_que_valoriza",
-        "texto": "O que voce mais valoriza ao escolher uma joia? (ate 2 opcoes)",
+        "texto": "O que você mais valoriza ao escolher uma joia? (até 2 opções)",
         "tipo": "multi",
         "max": 2,
         "tem_outro": True,
         "opcoes": [
             "Durabilidade",
             "Design exclusivo",
-            "Preco acessivel",
+            "Preço acessível",
             "Marca conhecida",
             "Versatilidade para o dia a dia",
         ],
     },
     {
         "id": "estilo_preferido",
-        "texto": "Qual estilo de joia voce prefere?",
+        "texto": "Qual estilo de joia você prefere?",
         "tipo": "single",
         "tem_outro": True,
         "opcoes": [
-            "Classico e atemporal",
-            "Moderno e de tendencia",
-            "Depende da peca e da ocasiao",
+            "Clássico e atemporal",
+            "Moderno e de tendência",
+            "Depende da peça e da ocasião",
         ],
     },
     {
         "id": "lojas_conhece",
-        "texto": "Quais lojas de joias voce conhece? (marque todas)",
+        "texto": "Quais lojas de joias você conhece? (marque todas)",
         "tipo": "multi",
         "max": 14,
         "tem_outro": True,
@@ -148,13 +149,13 @@ FEMI_QUESTIONS = [
     },
     {
         "id": "lojas_ja_comprou",
-        "texto": "Quais lojas de joias voce ja comprou? (marque todas)",
+        "texto": "Quais lojas de joias você já comprou? (marque todas)",
         "tipo": "dynamic_multi",
         "fonte": "lojas_conhece",
     },
     {
         "id": "lojas_pretende_comprar",
-        "texto": "Quais lojas de joias voce pretende comprar? (marque todas)",
+        "texto": "Quais lojas de joias você pretende comprar? (marque todas)",
         "tipo": "dynamic_multi",
         "fonte": "lojas_conhece",
     },
@@ -196,19 +197,21 @@ FEMI_QUESTIONS = [
     # ── Condicionais Coach (so aparecem se Coach em marcas_conhece) ──────────
     {
         "id": "coach_sabia",
-        "texto": "Voce sabia que existe uma loja com a revenda exclusiva da marca Coach em Maceio?",
+        "texto": "Você sabia que existe uma loja com a revenda exclusiva da marca Coach em Maceió?",
         "tipo": "single",
         "condicional_coach": True,
-        "opcoes": ["Sim", "Nao"],
+        "opcoes": ["Sim", "Não"],
     },
     {
         "id": "coach_diferencial",
-        "texto": "Voce considera um diferencial importante uma loja oferecer bolsas da marca Coach em Maceio?",
+        "texto": "Você considera um diferencial importante uma loja oferecer bolsas da marca Coach em Maceió?",
         "tipo": "single",
         "condicional_coach": True,
-        "opcoes": ["Sim", "Nao"],
+        "opcoes": ["Sim", "Não"],
     },
 ]
+ 
+
 
 # ── Questionario Masculino ────────────────────────────────────────────────────
 # Logica condicional no app.py:
@@ -216,13 +219,13 @@ FEMI_QUESTIONS = [
 #   - Negativo = "Nao, prefiro joias" ou "Nao costumo presentear com bolsas de marca"
 
 MASC_QUESTIONS = [
-    {
+        {
         "id": "onde_compra",
-        "texto": "Onde voce costuma comprar joias de presente? (ate 2 opcoes)",
+        "texto": "Onde você costuma comprar joias de presente? (até 2 opções)",
         "tipo": "multi",
         "max": 2,
         "opcoes": [
-            "Shopping em Maceio",
+            "Shopping em Maceió",
             "Loja (marca local)",
             "Site ou app (ex: Vivara, Oma)",
             "E-commerce (Shein, Shopee, Temu)",
@@ -231,59 +234,59 @@ MASC_QUESTIONS = [
     },
     {
         "id": "ocasioes_compra",
-        "texto": "Quais ocasioes mais motivam sua compra de presente? (ate 3 opcoes)",
+        "texto": "Quais ocasiões mais motivam sua compra de presente? (até 3 opções)",
         "tipo": "multi",
         "max": 3,
         "opcoes": [
-            "Aniversario dela",
+            "Aniversário dela",
             "Dia dos Namorados",
             "Natal",
-            "Conquista ou vitoria dela",
-            "Impulso, sem ocasiao especial",
+            "Conquista ou vitória dela",
+            "Impulso, sem ocasião especial",
             "Outras datas comemorativas",
         ],
     },
     {
         "id": "como_decide",
-        "texto": "Como voce costuma decidir qual joia comprar?",
+        "texto": "Como você costuma decidir qual joia comprar?",
         "tipo": "single",
         "tem_outro": True,
         "opcoes": [
             "Ela me diz o que quer",
             "Pesquiso online e escolho sozinho",
-            "Peco ajuda na loja",
+            "Peço ajuda na loja",
             "Sigo o que ela usa habitualmente",
-            "Peco sugestao a amigos ou familia",
+            "Peço sugestão a amigos ou família",
         ],
     },
     {
         "id": "o_que_valoriza",
-        "texto": "O que voce mais valoriza ao escolher uma joia de presente? (ate 2 opcoes)",
+        "texto": "O que você mais valoriza ao escolher uma joia de presente? (até 2 opções)",
         "tipo": "multi",
         "max": 2,
         "tem_outro": True,
         "opcoes": [
             "Qualidade e durabilidade",
-            "Preco acessivel",
+            "Preço acessível",
             "Design bonito",
             "Marca conhecida",
-            "Embalagem e apresentacao",
+            "Embalagem e apresentação",
         ],
     },
     {
         "id": "compraria_online",
-        "texto": "Voce compraria uma joia online sem ver fisicamente?",
+        "texto": "Você compraria uma joia online sem ver fisicamente?",
         "tipo": "single",
         "opcoes": [
             "Sim, sem problema",
-            "Sim, para pecas simples",
+            "Sim, para peças simples",
             "Apenas se conhecer bem a loja",
-            "Nao, prefiro ver pessoalmente",
+            "Não, prefiro ver pessoalmente",
         ],
     },
     {
         "id": "lojas_conhece",
-        "texto": "Quais lojas de joias voce conhece? (marque todas)",
+        "texto": "Quais lojas de joias você conhece? (marque todas)",
         "tipo": "multi",
         "max": 14,
         "tem_outro": True,
@@ -291,31 +294,31 @@ MASC_QUESTIONS = [
     },
     {
         "id": "lojas_ja_comprou",
-        "texto": "Quais lojas de joias voce ja comprou? (marque todas)",
+        "texto": "Quais lojas de joias você já comprou? (marque todas)",
         "tipo": "dynamic_multi",
         "fonte": "lojas_conhece",
     },
     {
         "id": "lojas_pretende_comprar",
-        "texto": "Quais lojas de joias voce pretende comprar? (marque todas)",
+        "texto": "Quais lojas de joias você pretende comprar? (marque todas)",
         "tipo": "dynamic_multi",
         "fonte": "lojas_conhece",
     },
     {
         "id": "interesse_bolsas",
-        "texto": "Voce teria interesse em presentear com bolsas de marca?",
+        "texto": "Você teria interesse em presentear com bolsas de marca?",
         "tipo": "single",
         "opcoes": [
-            "Sim, ja faco isso",
+            "Sim, já faço isso",
             "Sim, teria interesse",
-            "Talvez, dependendo do preco",
-            "Nao, prefiro joias",
-            "Nao costumo presentear com bolsas de marca",
+            "Talvez, dependendo do preço",
+            "Não, prefiro joias",
+            "Não costumo presentear com bolsas de marca",
         ],
     },
     {
         "id": "marcas_conhece",
-        "texto": "Quais marcas voce ja conhece? (marque todas)",
+        "texto": "Quais marcas você já conhece? (marque todas)",
         "tipo": "multi",
         "max": 11,
         "tem_outro": True,
@@ -324,16 +327,17 @@ MASC_QUESTIONS = [
     },
     {
         "id": "marcas_ja_comprou",
-        "texto": "Quais marcas voce ja comprou? (marque todas)",
+        "texto": "Quais marcas você já comprou? (marque todas)",
         "tipo": "dynamic_multi",
         "fonte": "marcas_conhece",
         "condicional_bolsas": True,
     },
     {
         "id": "marcas_pretende_comprar",
-        "texto": "Quais marcas voce tem pretensao de comprar? (marque todas)",
+        "texto": "Quais marcas você tem pretensão de comprar? (marque todas)",
         "tipo": "dynamic_multi",
         "fonte": "marcas_conhece",
         "condicional_bolsas": True,
     },
 ]
+
