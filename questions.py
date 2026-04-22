@@ -52,10 +52,10 @@ UNISSEX_QUESTIONS = [
     },
     {
         "id": "valor_ultima_compra",
-        "texto": "Qual o valor medio da sua ultima compra de joia ou acessorio?",
+        "texto": "Qual o valor médio da sua ultima compra de jóia ou acessório?",
         "tipo": "single",
         "opcoes": [
-            "Ate R\\$ 500",
+            "Até R\\$ 500",
             "R\\$ 501 a R\\$ 1.000",
             "R\\$ 1.001 a R\\$ 2.000",
             "Acima de R\\$ 2.000",
