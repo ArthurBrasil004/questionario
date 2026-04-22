@@ -1,5 +1,5 @@
 """
-app.py  -  Questionario (v5)
+app.py  -  Questionario (v6)
 Respostas salvas direto no Google Sheets via service account.
 Credenciais: credentials.json (local) ou st.secrets (Streamlit Cloud).
 """
@@ -220,6 +220,27 @@ def render_dynamic_single(q, resposta_atual):
     valido = valor is not None
     return valor, valido
 
+def render_dynamic_multi(q, resposta_atual):
+    """Opcoes geradas dinamicamente a partir das selecoes de outra pergunta."""
+    fonte_val = st.session_state.respostas.get(q["fonte"], [])
+    opcoes_din = []
+    for v in (fonte_val if isinstance(fonte_val, list) else []):
+        # "Outro: Chanel" vira "Chanel"
+        label = v.replace("Outro: ", "").strip() if v.startswith("Outro:") else v
+        opcoes_din.append(label)
+
+    if not opcoes_din:
+        return [], True  # skip silencioso
+
+    selecionados = list(resposta_atual) if isinstance(resposta_atual, list) else []
+    novos = []
+    for opcao in opcoes_din:
+        if st.checkbox(opcao, value=opcao in selecionados,
+                       key=f"{q['id']}_{opcao}"):
+            novos.append(opcao)
+
+    return novos, len(novos) > 0
+
 
 # ── Tela de pergunta ──────────────────────────────────────────────────────────
 def tela_pergunta(step):
@@ -248,6 +269,8 @@ def tela_pergunta(step):
         valor_final, valido = render_multi(q, resposta_atual)
     elif tipo == "dynamic_single":
         valor_final, valido = render_dynamic_single(q, resposta_atual)
+    elif tipo == "dynamic_multi":
+        valor_final, valido = render_dynamic_multi(q, resposta_atual)
     else:
         valor_final, valido = None, False
 
