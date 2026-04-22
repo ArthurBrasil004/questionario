@@ -1,5 +1,5 @@
 """
-app.py  -  Questionario (v4)
+app.py  -  Questionario (v5)
 Respostas salvas direto no Google Sheets via service account.
 Credenciais: credentials.json (local) ou st.secrets (Streamlit Cloud).
 """
@@ -13,7 +13,7 @@ from google.oauth2.service_account import Credentials
 from questions import UNISSEX_QUESTIONS, FEMI_QUESTIONS, MASC_QUESTIONS
 
 # ── Constantes ───────────────────────────────────────────────────────────────
-SHEET_NAME   = "Questionário-iolita"
+SHEET_NAME   = "Questionario-iolita"
 OUTRO_LABEL  = "Outro"
 SKIP_TO_END  = 9999
 
@@ -81,7 +81,7 @@ def save_to_sheets(row: dict):
 
 # ── Helpers de estado ─────────────────────────────────────────────────────────
 def init_state():
-    defaults = {"step": 0, "respostas": {}, "salvo": False}
+    defaults = {"step": 0, "respostas": {}}
     for k, v in defaults.items():
         if k not in st.session_state:
             st.session_state[k] = v
@@ -127,26 +127,27 @@ def _coach_selecionado():
     val = st.session_state.respostas.get("marcas_conhece", [])
     selecionados = val if isinstance(val, list) else []
     return any("Coach" in str(s) for s in selecionados)
- 
+
 def get_next_step(current_step, q_id, valor_final):
     sexo = get_sexo()
- 
+
     # Masc: pula marcas se resposta de bolsas for negativa
     if sexo == "Masculino" and q_id == "interesse_bolsas":
         if valor_final in BOLSAS_NEGATIVO:
             return SKIP_TO_END
         return current_step + 1
- 
+
     # Femi: apos marcas_gostaria, verifica se Coach foi selecionado
     if sexo == "Feminino" and q_id == "marcas_gostaria":
         if _coach_selecionado():
             return current_step + 1   # vai para coach_sabia
         return SKIP_TO_END            # pula as duas perguntas Coach
- 
+
     return current_step + 1
- 
+
 def get_prev_step(current_step):
     return max(0, current_step - 1)
+
 
 # ── Renderizacao de opcoes ────────────────────────────────────────────────────
 def render_single(q, resposta_atual):
@@ -273,13 +274,11 @@ def tela_final():
     st.markdown('<p class="sub-step">Suas respostas foram registradas com sucesso.</p>',
                 unsafe_allow_html=True)
 
-    if not st.session_state.salvo:          
-        row = build_row()
-        save_to_sheets(row)
-        st.session_state.salvo = True
+    row = build_row()
+    save_to_sheets(row)
 
     if st.button("Responder novamente", use_container_width=True):
-        for k in ["step", "respostas", "salvo"]:
+        for k in ["step", "respostas"]:
             del st.session_state[k]
         st.rerun()
 
