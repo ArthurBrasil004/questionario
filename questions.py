@@ -141,7 +141,7 @@ FEMI_QUESTIONS = [
     },
     {
         "id": "lojas_conhece",
-        "texto": "Quais lojas de joias você conhece? (marque todas)",
+        "texto": "Quais lojas de joias você conhece? (marcar quantas desejar)",
         "tipo": "multi",
         "max": 14,
         "tem_outro": True,
@@ -149,13 +149,13 @@ FEMI_QUESTIONS = [
     },
     {
         "id": "lojas_ja_comprou",
-        "texto": "Quais lojas de joias você já comprou? (marque todas)",
+        "texto": "Quais lojas de joias você já comprou? (marcar quantas desejar)",
         "tipo": "dynamic_multi",
         "fonte": "lojas_conhece",
     },
     {
         "id": "lojas_pretende_comprar",
-        "texto": "Quais lojas de joias você pretende comprar? (marque todas)",
+        "texto": "Quais lojas de joias você pretende comprar? (marcar quantas desejar)",
         "tipo": "dynamic_multi",
         "fonte": "lojas_conhece",
     },
@@ -168,7 +168,7 @@ FEMI_QUESTIONS = [
     },
     {
         "id": "tipo_bolsa",
-        "texto": "Qual tipo de bolsa voce mais gosta? (marque todas)",
+        "texto": "Qual tipo de bolsa voce mais gosta? (marcar quantas desejar)",
         "tipo": "multi",
         "max": 11,
         "tem_outro": True,
@@ -176,7 +176,7 @@ FEMI_QUESTIONS = [
     },
     {
         "id": "marcas_conhece",
-        "texto": "Quais marcas de bolsas abaixo voce conhece? (marque todas)",
+        "texto": "Quais marcas de bolsas abaixo voce conhece? (marcar quantas desejar)",
         "tipo": "multi",
         "max": 11,
         "tem_outro": True,
@@ -184,13 +184,13 @@ FEMI_QUESTIONS = [
     },
     {
         "id": "marcas_possui",
-        "texto": "Quais marcas de bolsas abaixo voce possui? (marque todas)",
+        "texto": "Quais marcas de bolsas abaixo voce possui? (marcar quantas desejar)",
         "tipo": "dynamic_multi",
         "fonte": "marcas_conhece",
     },
     {
         "id": "marcas_gostaria",
-        "texto": "Dentro dessas marcas, qual voce gostaria de ser presenteada ou adquirir? (marque todas)",
+        "texto": "Dentro dessas marcas, qual voce gostaria de ser presenteada ou adquirir? (marcar quantas desejar)",
         "tipo": "dynamic_multi",
         "fonte": "marcas_conhece",
     },
@@ -286,7 +286,7 @@ MASC_QUESTIONS = [
     },
     {
         "id": "lojas_conhece",
-        "texto": "Quais lojas de joias você conhece? (marque todas)",
+        "texto": "Quais lojas de joias você conhece? (marcar quantas desejar)",
         "tipo": "multi",
         "max": 14,
         "tem_outro": True,
@@ -294,13 +294,13 @@ MASC_QUESTIONS = [
     },
     {
         "id": "lojas_ja_comprou",
-        "texto": "Quais lojas de joias você já comprou? (marque todas)",
+        "texto": "Quais lojas de joias você já comprou? (marcar quantas desejar)",
         "tipo": "dynamic_multi",
         "fonte": "lojas_conhece",
     },
     {
         "id": "lojas_pretende_comprar",
-        "texto": "Quais lojas de joias você pretende comprar? (marque todas)",
+        "texto": "Quais lojas de joias você pretende comprar? (marcar quantas desejar)",
         "tipo": "dynamic_multi",
         "fonte": "lojas_conhece",
     },
@@ -318,7 +318,7 @@ MASC_QUESTIONS = [
     },
     {
         "id": "marcas_conhece",
-        "texto": "Quais marcas você já conhece? (marque todas)",
+        "texto": "Quais marcas você já conhece? (marcar quantas desejar)",
         "tipo": "multi",
         "max": 11,
         "tem_outro": True,
@@ -327,14 +327,14 @@ MASC_QUESTIONS = [
     },
     {
         "id": "marcas_ja_comprou",
-        "texto": "Quais marcas você já comprou? (marque todas)",
+        "texto": "Quais marcas você já comprou? (marcar quantas desejar)",
         "tipo": "dynamic_multi",
         "fonte": "marcas_conhece",
         "condicional_bolsas": True,
     },
     {
         "id": "marcas_pretende_comprar",
-        "texto": "Quais marcas você tem pretensão de comprar? (marque todas)",
+        "texto": "Quais marcas você tem pretensão de comprar? (marcar quantas desejar)",
         "tipo": "dynamic_multi",
         "fonte": "marcas_conhece",
         "condicional_bolsas": True,
