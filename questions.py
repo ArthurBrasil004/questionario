@@ -152,12 +152,14 @@ FEMI_QUESTIONS = [
         "texto": "Quais lojas de joias você já comprou? (marcar quantas desejar)",
         "tipo": "dynamic_multi",
         "fonte": "lojas_conhece",
+        "tem_nenhuma": True,
     },
     {
         "id": "lojas_pretende_comprar",
         "texto": "Quais lojas de joias você pretende comprar? (marcar quantas desejar)",
         "tipo": "dynamic_multi",
         "fonte": "lojas_conhece",
+        "tem_nenhuma": True,
     },
     # ── Bolsas ───────────────────────────────────────────────────────────────
     {
@@ -187,12 +189,14 @@ FEMI_QUESTIONS = [
         "texto": "Quais marcas de bolsas abaixo voce possui? (marcar quantas desejar)",
         "tipo": "dynamic_multi",
         "fonte": "marcas_conhece",
+        "tem_nenhuma": True,
     },
     {
         "id": "marcas_gostaria",
         "texto": "Dentro dessas marcas, qual voce gostaria de ser presenteada ou adquirir? (marcar quantas desejar)",
         "tipo": "dynamic_multi",
         "fonte": "marcas_conhece",
+        "tem_nenhuma": True,
     },
     # ── Condicionais Coach (so aparecem se Coach em marcas_conhece) ──────────
     {
@@ -297,12 +301,14 @@ MASC_QUESTIONS = [
         "texto": "Quais lojas de joias você já comprou? (marcar quantas desejar)",
         "tipo": "dynamic_multi",
         "fonte": "lojas_conhece",
+        "tem_nenhuma": True,
     },
     {
         "id": "lojas_pretende_comprar",
         "texto": "Quais lojas de joias você pretende comprar? (marcar quantas desejar)",
         "tipo": "dynamic_multi",
         "fonte": "lojas_conhece",
+        "tem_nenhuma": True,
     },
     {
         "id": "interesse_bolsas",
@@ -330,6 +336,7 @@ MASC_QUESTIONS = [
         "texto": "Quais marcas você já comprou? (marcar quantas desejar)",
         "tipo": "dynamic_multi",
         "fonte": "marcas_conhece",
+        "tem_nenhuma": True,
         "condicional_bolsas": True,
     },
     {
@@ -337,6 +344,7 @@ MASC_QUESTIONS = [
         "texto": "Quais marcas você tem pretensão de comprar? (marcar quantas desejar)",
         "tipo": "dynamic_multi",
         "fonte": "marcas_conhece",
+        "tem_nenhuma": True,
         "condicional_bolsas": True,
     },
 ]
