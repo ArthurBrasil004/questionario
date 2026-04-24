@@ -13,7 +13,6 @@ LOJAS_OPCOES = [
     "Vivara Life",
     "Vivante",
     "Arte Dourada",
-    "Nao conheco nenhuma",
 ]
 
 MARCAS_BOLSAS_OPCOES = [
