@@ -231,12 +231,25 @@ def render_dynamic_multi(q, resposta_atual):
     if not opcoes_din:
         return [], True  # skip silencioso
 
+    tem_nenhuma = q.get("tem_nenhuma", False)
+    NENHUMA = "Nenhuma das acima"
+
     selecionados = list(resposta_atual) if isinstance(resposta_atual, list) else []
     novos = []
     for opcao in opcoes_din:
-        if st.checkbox(opcao, value=opcao in selecionados,
+        marcado      = opcao in selecionados
+        desabilitado = NENHUMA in selecionados  # bloqueia se "Nenhuma" marcada
+        if st.checkbox(opcao, value=marcado, disabled=desabilitado,
                        key=f"{q['id']}_{opcao}"):
             novos.append(opcao)
+
+    if tem_nenhuma:
+        nenhuma_marcada = NENHUMA in selecionados
+        if st.checkbox(NENHUMA, value=nenhuma_marcada,
+                       key=f"{q['id']}_nenhuma"):
+            novos = [NENHUMA]  # desmarca tudo e fica só com Nenhuma
+        elif NENHUMA in novos:
+            novos.remove(NENHUMA)
 
     return novos, True
 
